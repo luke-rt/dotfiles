@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!LICENSE
+
+!.zshrc
+
+!.config/nvim/init.lua
