@@ -18,7 +18,7 @@ require("config.plugins")
 require("config.opts")
 
 -- [[ Keymaps ]]
-require("config.kemaps")
+require("config.keymaps")
 
 -- [[ Configure LSP ]]
 require("config.lsp")
