@@ -5,4 +5,9 @@
 
 !.zshrc
 
-!.config/nvim/init.lua
+!.config/
+!.config/nvim/
+!.config/nvim/lua/
+!.config/nvim/lua/config/
+!.config/nvim/lua/config/plugins/
+.config/nvim/lazy-lock.json
