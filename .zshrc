@@ -30,6 +30,8 @@ alias dl="sudo mv --force -t ~/.trash"
 alias vim="nvim"
 alias npm="pnpm"
 alias py="python3"
+alias grep="rg"
+alias find="fd"
 
 export PATH="$PATH:$(brew --prefix openjdk)/bin/"
 export PATH="$PATH:$HOME/Applications/flutter/bin"

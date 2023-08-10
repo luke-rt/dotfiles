@@ -7,6 +7,8 @@ vim.o.timeoutlen = 300
 
 vim.wo.signcolumn = 'yes'
 
+vim.o.cursorline = true
+
 vim.o.termguicolors = true
 
 vim.o.undofile = true
