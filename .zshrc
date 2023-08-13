@@ -26,12 +26,17 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 alias ls="exa --all --classify --group-directories-first --color=always"
-alias dl="sudo mv --force -t ~/.trash"
 alias vim="nvim"
 alias npm="pnpm"
 alias py="python3"
 alias grep="rg"
 alias find="fd"
+alias dl="trash"
+
+# move to Trash 
+trash() {
+  mv -f "$1" ~/.trash
+}
 
 export PATH="$PATH:$(brew --prefix openjdk)/bin/"
 export PATH="$PATH:$HOME/Applications/flutter/bin"
