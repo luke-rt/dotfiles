@@ -27,3 +27,5 @@ vim.o.smartcase = true
 -- Better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+-- OCaml Indent
+vim.opt.rtp:append("/Users/luke/.opam/4.14.1/share/ocp-indent/vim")

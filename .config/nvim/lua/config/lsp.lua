@@ -1,6 +1,5 @@
 -- [[ Configure LSP ]]
 local on_attach = function(_, bufnr)
-  -- Sets the mode, buffer and description everytime LSP loads on a buffer
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -43,6 +42,7 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   jdtls = {},
+  ocamllsp = {},
 
   lua_ls = {
     Lua = {

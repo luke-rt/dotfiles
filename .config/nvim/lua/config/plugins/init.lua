@@ -12,6 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 require('lazy').setup({
   -- Git plugins
   'tpope/vim-fugitive',
@@ -48,6 +49,19 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
+  {
+    -- Debugger
+    'mfussenegger/nvim-dap',
+    dependencies = {
+      'rcarriga/nvim-dap-ui',
+
+      'williamboman/mason.nvim',
+      'jay-babu/mason-nvim-dap.nvim',
+
+      -- Language specific
+      'simrat39/rust-tools.nvim',
+    },
+  },
 
   -- Shows pending keybinds.
   { 'folke/which-key.nvim',          opts = {} },
@@ -70,14 +84,14 @@ require('lazy').setup({
       end,
     },
   },
-
+  -- OneDark theme
   {
-    -- Theme
-    'navarasu/onedark.nvim',
+    'olimorris/onedarkpro.nvim',
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'onedark'
     end,
+
   },
 
   {
@@ -96,10 +110,8 @@ require('lazy').setup({
   {
     -- Indentation guides
     'lukas-reineke/indent-blankline.nvim',
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    opts = {},
+    main = "ibl",
   },
 
   -- "gc" to comment visual regions/lines
@@ -138,9 +150,17 @@ require('lazy').setup({
       )
     end,
   },
+  {
+    "github/copilot.vim",
+  }
   -- { import = 'config.plugins' },
 }, {})
 
 require("config.plugins.telescope")
 require("config.plugins.treesitter")
 require("config.plugins.nvim-cmp")
+require("config.plugins.debug")
+
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ""
