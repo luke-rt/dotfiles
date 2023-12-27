@@ -41,6 +41,9 @@ trash() {
 export PATH="$PATH:$(brew --prefix openjdk)/bin/"
 export PATH="$PATH:$HOME/Applications/flutter/bin"
 
+# OCaml initialization
+eval $(opam config env)
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -53,3 +56,16 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# opam configuration
+[[ ! -r /Users/luke/.opam/opam-init/init.zsh ]] || source /Users/luke/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# ocaml version
+eval $(opam env)
+
+# bun completions
+[ -s "/Users/luke/.bun/_bun" ] && source "/Users/luke/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
