@@ -1,27 +1,18 @@
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- [[ Highlight on yank ]]
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
-
--- [[ Import plugins ]]
+-- [[ Plugins ]]
 require("config.plugins")
 
--- [[ Setting options ]]
+-- [[ Options ]]
 require("config.opts")
 
 -- [[ Keymaps ]]
 require("config.keymaps")
 
--- [[ Configure LSP ]]
+-- [[ LSP ]]
 require("config.lsp")
 
--- Setup neovim lua configuration
-require('neodev').setup()
