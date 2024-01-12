@@ -49,5 +49,3 @@ cmp.setup {
     { name = 'path' },
   },
 }
-
-

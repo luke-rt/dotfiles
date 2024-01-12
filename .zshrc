@@ -7,17 +7,18 @@ fi
 
 # oh my zsh initialization
 plugins=(
-  git
-  zsh-vi-mode
-  zsh-autosuggestions
   zsh-syntax-highlighting
+  git
+  zsh-autosuggestions
 )
 
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 COMPLETION_WAITING_DOTS="true"
+
+bindkey '^J' autosuggest-accept
+bindkey '^J^J' autosuggest-execute
 
 # User configuration
 export LANG=en_US.UTF-8
@@ -44,11 +45,6 @@ export PATH="$PATH:$HOME/Applications/flutter/bin"
 # OCaml initialization
 eval $(opam config env)
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-source $ZSH/oh-my-zsh.sh
-
 # pnpm
 export PNPM_HOME="/Users/luke/Library/pnpm"
 case ":$PATH:" in
@@ -69,3 +65,12 @@ eval $(opam env)
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# OpenCV Rust Binding being stubborn with libclang
+export DYLD_FALLBACK_LIBRARY_PATH="$(xcode-select --print-path)/usr/lib/"
+
+
+# LAST
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source $ZSH/oh-my-zsh.sh
+

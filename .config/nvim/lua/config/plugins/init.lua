@@ -33,7 +33,7 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -58,7 +58,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -198,10 +198,23 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+
+  -- Github Copilot
+  {
+    "github/copilot.vim",
+    config = function()
+      vim.g.copilot_no_tab_map = true
+      vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+    end
+  },
+
+  -- autoformat.lua
+  { import = "config.plugins.autoformat" },
+
+  -- harpoon.LuaSnip
+  { import = "config.plugins.harpoon" },
 }, {})
 
 require("config.plugins.telescope")
 require("config.plugins.treesitter")
 require("config.plugins.nvim-cmp")
-require("config.plugins.autoformat")
-
