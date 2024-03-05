@@ -69,6 +69,12 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # OpenCV Rust Binding being stubborn with libclang
 export DYLD_FALLBACK_LIBRARY_PATH="$(xcode-select --print-path)/usr/lib/"
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# zsh autosuggestions
+bindkey '^ ' autosuggest-accept
 
 # LAST
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
