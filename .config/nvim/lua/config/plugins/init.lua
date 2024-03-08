@@ -211,8 +211,11 @@ require('lazy').setup({
   -- autoformat.lua
   { import = "config.plugins.autoformat" },
 
-  -- harpoon.LuaSnip
+  -- harpoon.lua
   { import = "config.plugins.harpoon" },
+
+  -- nvim-tree.lua
+  { import = "config.plugins.nvim-tree" },
 }, {})
 
 require("config.plugins.telescope")

@@ -74,7 +74,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 # zsh autosuggestions
-bindkey '^ ' autosuggest-accept
+bindkey '^I^I' autosuggest-accept
 
 # LAST
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
