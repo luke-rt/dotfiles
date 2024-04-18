@@ -28,7 +28,6 @@ export VISUAL='nvim'
 
 alias ls="exa --all --classify --group-directories-first --color=always"
 alias vim="nvim"
-alias npm="pnpm"
 alias py="python3"
 alias grep="rg"
 alias find="fd"
