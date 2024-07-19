@@ -34,9 +34,6 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       { 'j-hui/fidget.nvim',       opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
     },
   },
 
@@ -191,12 +188,11 @@ require('lazy').setup({
   },
 
   {
-    -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equalent to setup({}) function
   },
 
   -- Github Copilot
@@ -216,8 +212,10 @@ require('lazy').setup({
 
   -- nvim-tree.lua
   { import = "config.plugins.nvim-tree" },
+
+  -- treesitter.lua
+  { import = "config.plugins.treesitter" },
 }, {})
 
 require("config.plugins.telescope")
-require("config.plugins.treesitter")
 require("config.plugins.nvim-cmp")

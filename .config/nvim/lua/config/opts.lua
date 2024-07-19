@@ -33,9 +33,16 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 vim.o.cursorline = true
 
+-- tabwidth
+vim.bo.tabstop = 4
+vim.bo.shiftwidth = 4
+
 -- Disable netrw in favor of nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- python executable
+vim.g.python3_host_prog = '/Users/luke/.asdf/shims/python'
 
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

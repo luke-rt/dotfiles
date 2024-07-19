@@ -16,6 +16,7 @@ return {
 
         api.config.mappings.default_on_attach(bufnr)
         vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+        vim.keymap.set('n', '<C-;>', api.tree.toggle, opts('Toggle'))
       end,
       actions = {
         open_file = {

@@ -7,6 +7,7 @@ fi
 
 # oh my zsh initialization
 plugins=(
+  asdf
   zsh-syntax-highlighting
   git
   zsh-autosuggestions
@@ -17,9 +18,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 COMPLETION_WAITING_DOTS="true"
 
-bindkey '^J' autosuggest-accept
-bindkey '^J^J' autosuggest-execute
-
 # User configuration
 export LANG=en_US.UTF-8
 
@@ -28,10 +26,9 @@ export VISUAL='nvim'
 
 alias ls="exa --all --classify --group-directories-first --color=always"
 alias vim="nvim"
-alias py="python3"
+alias py="python"
 alias grep="rg"
 alias find="fd"
-alias dl="trash"
 
 # move to Trash 
 trash() {
@@ -40,9 +37,7 @@ trash() {
 
 export PATH="$PATH:$(brew --prefix openjdk)/bin/"
 export PATH="$PATH:$HOME/Applications/flutter/bin"
-
-# OCaml initialization
-eval $(opam config env)
+export PATH="$PATH:/Users/luke/.local/bin"
 
 # pnpm
 export PNPM_HOME="/Users/luke/Library/pnpm"
@@ -52,25 +47,15 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# opam configuration
+# OCaml/opam
+eval $(opam config env)
 [[ ! -r /Users/luke/.opam/opam-init/init.zsh ]] || source /Users/luke/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
-# ocaml version
 eval $(opam env)
 
-# bun completions
-[ -s "/Users/luke/.bun/_bun" ] && source "/Users/luke/.bun/_bun"
-
 # bun
+[ -s "/Users/luke/.bun/_bun" ] && source "/Users/luke/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# OpenCV Rust Binding being stubborn with libclang
-export DYLD_FALLBACK_LIBRARY_PATH="$(xcode-select --print-path)/usr/lib/"
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # zsh autosuggestions
 bindkey '^I^I' autosuggest-accept

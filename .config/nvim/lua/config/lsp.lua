@@ -81,7 +81,6 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
-  ocamllsp = {},
 
   lua_ls = {
     Lua = {
@@ -91,9 +90,6 @@ local servers = {
     },
   },
 }
-
--- Setup neovim lua configuration
-require('neodev').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -116,3 +112,15 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+-- Diagnostics
+vim.diagnostic.config({
+  signs = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    header = "",
+    prefix = "",
+  },
+})
