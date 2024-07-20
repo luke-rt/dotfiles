@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- [[ Plugins ]]
-require("config.plugins")
+require("config.lazy")
 
 -- [[ Options ]]
 require("config.opts")
