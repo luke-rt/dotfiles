@@ -9,6 +9,3 @@ require("config.opts")
 
 -- [[ Keymaps ]]
 require("config.keymaps")
-
--- [[ LSP ]]
-require("config.lsp")
