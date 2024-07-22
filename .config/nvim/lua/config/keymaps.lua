@@ -11,7 +11,10 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
--- NvimTree keymaps
-vim.keymap.set("n", "<C-n>", "<CMD>NvimTreeToggle<CR>", { desc = "nvim-tree: Toggle" })
+-- nvimtree keymaps
+vim.keymap.set("n", "<c-n>", "<cmd>NvimTreeToggle<cr>", { desc = "nvim-tree: toggle" })
+
+-- Comment keymaps
+vim.keymap.set({ "n", "v" }, "<leader>/", function() require('Comment.api').toggle.linewise.current() end,
+	{ noremap = true, silent = true, desc = 'Comment linewise' })
