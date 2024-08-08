@@ -16,8 +16,8 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'black', 'isort', 'flake8' },
-
+      python = { 'isort', 'flake8' },
+      ocaml = { 'ocamlformat' },
       javascript = { { 'prettierd', 'prettier' } },
     },
   },

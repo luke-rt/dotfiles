@@ -6,10 +6,12 @@ return {
     event = 'VeryLazy',
   },
   {
-    'tpope/vim-sleuth',
-    event = 'VeryLazy',
+    'nmac427/guess-indent.nvim',
+    lazy = false,
+    config = function()
+      require('guess-indent').setup {}
+    end,
   },
-
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
@@ -55,20 +57,19 @@ return {
   -- Github Copilot
   {
     'github/copilot.vim',
-    event = 'InsertEnter',
+    lazy = false,
     config = function()
       vim.g.copilot_no_tab_map = true
       vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
     end,
   },
+  -- Autopairs
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
-    -- Optional dependency
     dependencies = { 'hrsh7th/nvim-cmp' },
     config = function()
       require('nvim-autopairs').setup {}
-      -- If you want to automatically add `(` after selecting a function or method
       local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
       local cmp = require 'cmp'
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())

@@ -10,6 +10,8 @@ return { -- LSP Configuration & Plugins
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
 
+    'hrsh7th/cmp-nvim-lsp',
+
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
     {
@@ -134,6 +136,7 @@ return { -- LSP Configuration & Plugins
       rust_analyzer = {},
       html = {},
       jdtls = {},
+      ocamllsp = {},
       -- https://github.com/pmizio/typescript-tools.nvim
       tsserver = {},
       lua_ls = {

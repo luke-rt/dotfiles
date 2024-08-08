@@ -15,24 +15,24 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure plugins ]]
-require('lazy').setup("config.plugins", {
-	defaults = { lazy = true },
-	checker = { enabled = true },
-	ui = { border = "rounded" },
-	performance = {
-		cache = {
-			enabled = true,
-		},
-		rtp = {
-			disabled_plugins = {
-				"netrwPlugin",
-				"gzip",
-				"tarPlugin",
-				"tohtml",
-				"tutor",
-				"zipPlugin",
-			},
-		},
-	},
-	debug = false,
+require('lazy').setup('config.plugins', {
+  defaults = { lazy = true },
+  checker = { enabled = true, notify = false },
+  ui = { border = 'rounded' },
+  performance = {
+    cache = {
+      enabled = true,
+    },
+    rtp = {
+      disabled_plugins = {
+        'netrwPlugin',
+        'gzip',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
+  },
+  debug = false,
 })
