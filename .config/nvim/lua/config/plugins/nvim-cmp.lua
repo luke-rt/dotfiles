@@ -1,6 +1,6 @@
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
-  event = 'InsertEnter',
+  event = 'VeryLazy',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
     {
@@ -25,8 +25,8 @@ return { -- Autocompletion
 
     -- Adds other completion capabilities.
     'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-path',
     'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-cmdline',
   },
   config = function()
     local cmp = require 'cmp'
@@ -67,16 +67,28 @@ return { -- Autocompletion
         end, { 'i', 's' }),
       },
       sources = {
+        { name = 'nvim_lsp' },
         {
           name = 'lazydev',
-          -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
           group_index = 0,
         },
         { name = 'buffer' },
-        { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'path' },
       },
     }
+
+    cmp.setup.cmdline({ '/', '?' }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' },
+      },
+    })
+
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'cmdline' },
+      },
+    })
   end,
 }
