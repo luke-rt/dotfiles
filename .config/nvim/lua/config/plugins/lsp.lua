@@ -1,6 +1,6 @@
 return { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
-  event = 'VeryLazy',
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
@@ -138,7 +138,6 @@ return { -- LSP Configuration & Plugins
       jdtls = {},
       ocamllsp = {},
       -- https://github.com/pmizio/typescript-tools.nvim
-      tsserver = {},
       lua_ls = {
         settings = {
           Lua = {
