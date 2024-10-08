@@ -9,7 +9,6 @@ fi
 plugins=(
   asdf
   zsh-syntax-highlighting
-  git
   zsh-autosuggestions
 )
 
@@ -24,21 +23,10 @@ export LANG=en_US.UTF-8
 export EDITOR='nvim'
 export VISUAL='nvim'
 
-alias ls="exa --all --classify --group-directories-first --color=always"
-alias vim="nvim"
-alias py="python"
-alias grep="rg"
-alias find="fd"
-
-# move to Trash 
-trash() {
-  mv -f "$1" ~/.trash
-}
-
 export PATH="$PATH:$(brew --prefix openjdk)/bin/"
 export PATH="$PATH:$HOME/Applications/flutter/bin"
 export PATH="$PATH:/Users/luke/.local/bin"
-
+export PATH="$PATH:$HOME/.gem/bin"
 # pnpm
 export PNPM_HOME="/Users/luke/Library/pnpm"
 case ":$PATH:" in
@@ -58,9 +46,15 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # zsh autosuggestions
-bindkey '^I^I' autosuggest-accept
+bindkey '^j' autosuggest-accept
 
 # LAST
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source $ZSH/oh-my-zsh.sh
 
+alias ls="eza --all --classify --group-directories-first --color=always"
+alias vim="nvim"
+alias py="python"
+alias grep="rg"
+alias find="fd"
+alias trash="$HOME/.config/tools-osx/trash"
