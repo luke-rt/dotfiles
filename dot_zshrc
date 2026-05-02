@@ -1,52 +1,64 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# Powerlevel10k
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-# oh my zsh initialization
+
+# OMZ
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+
 plugins=(
   asdf
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
 
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+zstyle ':omz:completion:*' use-cache yes
+zstyle ':completion:*' cache-path ~/.zcompcache
 
-COMPLETION_WAITING_DOTS="true"
 
-# User configuration
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
+
 export LANG=en_US.UTF-8
-
 export EDITOR='nvim'
 export VISUAL='nvim'
 
-export PATH="$PATH:$(brew --prefix openjdk)/bin/"
+
+export PATH="$PATH:$(brew --prefix openjdk)/bin"
 export PATH="$PATH:/Users/lukert/.local/bin"
 export PATH="$PATH:$HOME/.gem/bin"
-export PATH="$PATH:$HOME/.asdf/installs/nodejs/$(asdf current nodejs | awk 'NR==2 {print $2}')/bin"
+
 # pnpm
-export PNPM_HOME="/Users/lukert/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
-# OCaml/opam
-eval $(opam config env)
-[[ ! -r /Users/lukert/.opam/opam-init/init.zsh ]] || source /Users/lukert/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-eval $(opam env)
+export PATH="$HOME/.asdf/shims:$PATH"
 
-# zsh autosuggestions
+
+opam() {
+  unset -f opam
+  eval "$(/Users/lukert/.opam/opam-init/init.zsh)"
+  opam "$@"
+}
+
+
 bindkey '^j' autosuggest-accept
 
-# LAST
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 source $ZSH/oh-my-zsh.sh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
 
 alias ls="eza --all --classify --group-directories-first --color=always"
 alias vim="nvim"
@@ -54,4 +66,3 @@ alias py="python"
 alias grep="rg"
 alias find="fd"
 alias trash="$HOME/.config/tools-osx/trash"
-
