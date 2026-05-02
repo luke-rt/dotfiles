@@ -1,0 +1,11 @@
+theme = Raycast Dark
+
+background = 1d1f21
+background-opacity = 0.9
+background-blur = true
+
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+macos-titlebar-proxy-icon = hidden
