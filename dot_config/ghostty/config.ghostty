@@ -1,4 +1,4 @@
-theme = Raycast Dark
+theme = Dark Modern
 
 background = 1d1f21
 background-opacity = 0.9
@@ -8,4 +8,5 @@ cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 
+macos-icon = custom
 macos-titlebar-proxy-icon = hidden
